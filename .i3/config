@@ -192,12 +192,41 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Widow Colours
+#                         border  background text    indicator
+  client.focused          $base01 $base01    $base07 $base0F
+  client.focused_inactive $base02 $base02    $base03 $base0F
+  client.unfocused        $base02 $base02    $base03 $base0F
+  client.urgent           $base02 $base08    $base00 $base0F
+
+
+
+bar {
+        #status_command i3status
+        status_command i3blocks -c ~/.i3/i3blocks.conf
+        font pango: Ubuntu, FontAwesome 11
+        position bottom
+        strip_workspace_numbers yes
+        #bindsym button4 nop
+        #bindsym button5 nop
+        colors {
+              separator $base03
+              background $base01
+              statusline $base05
+#                        border  background text
+              focused_workspace  $base01 $base01    $base07
+              active_workspace   $base01 $base02    $base03
+              inactive_workspace $base01 $base01    $base03
+              urgent_workspace   $base01 $base01    $base08
+    }
+}
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3blocks -c ~/.i3/i3blocks.conf
-        tray_output primary
-}
+#bar {
+#        status_command i3blocks -c ~/.i3/i3blocks.conf
+#        tray_output primary
+#}
 
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a
