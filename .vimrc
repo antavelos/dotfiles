@@ -10,8 +10,8 @@ call vundle#begin()
 " " let Vundle manage Vundle, required
 "
 " " All of your Plugins must be added before the following line
- call vundle#end()            " required
- filetype plugin indent on    " required
+call vundle#end()            " required
+filetype plugin indent on    " required
 " " To ignore plugin indent changes, instead use:
 filetype plugin on
 " "
@@ -41,9 +41,11 @@ set expandtab
 " Pathogen
 execute pathogen#infect()
 call pathogen#helptags() " generate helptags for everything in ‘runtimepath’
-syntax on
-filetype plugin indent on
-colorscheme Sunburst
+
+syntax enable
+set background=dark
+colorscheme hybrid_reverse
+
 let NERDTreeShowHidden=1
 " Give a shortcut key to NERD Tree
 let nerdtree_tabs_open_on_console_startup=1
