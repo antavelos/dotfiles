@@ -4,6 +4,7 @@ IGNORE=("." ".." ".git")
 PWD=`pwd`
 FILES=`ls -a`
 
+# Helper functions
 is_dotfile() {
 	[[ $1 = .* ]]
 }
@@ -18,10 +19,25 @@ can_be_used() {
 	return 0 # true
 }
 
+exists() {
+	[ -f $1 ] || [ -d $1 ]
+}
 
+create_link() {
+	src=$PWD/$1
+	dest=~/$1
+	if ! exists $dest; then
+		ln -s $src $dest
+		echo "Created link: $dest."
+	else
+		echo "$dest already exists."
+	fi
+}
+
+# Main
 for file in $FILES; do
 	if is_dotfile $file && can_be_used $file; then
+		create_link $file
 		# echo $PWD/$file
-		ln -s $PWD/$file ~/$file
 	fi
 done
