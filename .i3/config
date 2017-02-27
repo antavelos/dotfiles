@@ -204,7 +204,7 @@ bindsym $mod+r mode "resize"
 bar {
         #status_command i3status
         status_command i3blocks -c ~/.i3/i3blocks.conf
-        font pango: Ubuntu, FontAwesome 11
+        font pango: Ubuntu 11
         position bottom
         strip_workspace_numbers yes
         #bindsym button4 nop
