@@ -252,3 +252,7 @@ bindsym $mod+shift+x exec i3lock
 # Control key bindings
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ 
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%-
+
+
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
