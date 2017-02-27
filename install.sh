@@ -26,18 +26,16 @@ exists() {
 create_link() {
 	src=$PWD/$1
 	dest=~/$1
-	if ! exists $dest; then
-		ln -s $src $dest
-		echo "Created link: $dest."
-	else
-		echo "$dest already exists."
+	if exists $dest; then
+		mv $dest $dest.bck
 	fi
+	ln -s $src $dest
+	echo "Created link: $dest"
 }
 
 # Main
 for file in $FILES; do
 	if is_dotfile $file && can_be_used $file; then
 		create_link $file
-		# echo $PWD/$file
 	fi
 done
