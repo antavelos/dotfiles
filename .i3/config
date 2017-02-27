@@ -55,7 +55,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 50 -padding 50 -opacity "90" -bw 0 -bc "$base01" -bg "$base02" -fg "$base07" -hlbg "$base05" -columns 1 -font "Ubuntu 12" -hlfg "#9575cd"
@@ -204,9 +204,9 @@ bindsym $mod+r mode "resize"
 bar {
         #status_command i3status
         status_command i3blocks -c ~/.i3/i3blocks.conf
-        font pango: Ubuntu 11
+        font pango: Ubuntu, FontAwesome 11
         position bottom
-        strip_workspace_numbers yes
+        strip_workspace_numbers no
         #bindsym button4 nop
         #bindsym button5 nop
         colors {
@@ -250,5 +250,5 @@ exec compton -f
 bindsym $mod+shift+x exec i3lock
 
 # Control key bindings
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ 
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%-
