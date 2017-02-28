@@ -154,11 +154,10 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 
-assign [class="Terminator"] $wsp1
-assign [class="google-chrome"] $wsp2
-assign [class="Sublime_text"] $wsp3
-assign [class="Spotify"] $wsp4
-
+for_window [class="Terminator"] move to workspace $wsp1 focus
+for_window [class="google-chrome"] move to workspace $wsp2 focus
+for_window [class="Sublime_text"] move to workspace $wsp3 focus
+for_window [class="Spotify"] move to workspace $wsp4 focus
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -243,14 +242,16 @@ bar {
 exec terminator
 exec google-chrome
 exec subl
-#exec spotify
+exec spotify
 exec compton -f
 
 # App key bindings
-bindsym $mod+shift+x exec i3lock
+bindsym $mod+control+l exec ~/.i3/lock.sh
+bindsym $mod+F1 exec nautilus
+bindsym $mod+F2 exec lxappearance
 
 # Control key bindings
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ 
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%-
 
 
