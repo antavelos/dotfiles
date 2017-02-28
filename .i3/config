@@ -127,7 +127,7 @@ bindsym $mod+minus scratchpad show
 set $wsp1 "1: Terminal "
 set $wsp2 "2: Web "
 set $wsp3 "3: Editor "
-set $wsp4 "4: Spotify "
+set $wsp4 "4: Music ♪"
 set $wsp5 "5: Files "
 
 # switch to workspace
@@ -158,7 +158,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 for_window [class="Terminator"] move to workspace $wsp1 focus
 for_window [class="Tor Browser"] move to workspace $wsp2 focus
 for_window [class="Sublime_text"] move to workspace $wsp3 focus
-for_window [class="Spotify"] move to workspace $wsp4 focus
+for_window [class="Clementine"] move to workspace $wsp4 focus
 for_window [class="Gnome-terminal"] move to workspace $wsp5 focus
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -246,7 +246,7 @@ exec terminator
 exec xranger # start ranger in gnome-terminal
 #exec google-chrome
 exec subl
-exec spotify
+exec clementine
 exec compton -f
 
 # App key bindings
