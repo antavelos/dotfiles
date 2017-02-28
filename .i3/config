@@ -124,10 +124,10 @@ bindsym $mod+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
-set $wsp1 "1: Terminal"
-set $wsp2 "2: Web"
-set $wsp3 "3: Editor"
-set $wsp4 "4: Music"
+set $wsp1 "1: Terminal "
+set $wsp2 "2: Web "
+set $wsp3 "3: Editor "
+set $wsp4 "4: Spotify "
 
 # switch to workspace
 bindsym $mod+1 workspace $wsp1
@@ -249,6 +249,7 @@ exec compton -f
 bindsym $mod+control+l exec ~/.i3/lock.sh
 bindsym $mod+F1 exec nautilus
 bindsym $mod+F2 exec lxappearance
+bindsym $mod+F12 exec systemctl suspend
 
 # Control key bindings
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+
