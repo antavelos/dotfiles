@@ -262,3 +262,6 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%
 
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym Pause exec clementine -t
+bindsym $mod+control+Delete exec clementine -f
+bindsym $mod+control+Insert exec clementine -r
