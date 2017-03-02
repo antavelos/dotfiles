@@ -18,6 +18,7 @@ i3
 	lxappearance
 	scrot
 	vim
+	xprop
 
 apps
 ------

@@ -159,7 +159,7 @@ for_window [class="Terminator"] move to workspace $wsp1 focus
 for_window [class="Tor Browser"] move to workspace $wsp2 focus
 for_window [class="Sublime_text"] move to workspace $wsp3 focus
 for_window [class="Clementine"] move to workspace $wsp4 focus
-for_window [class="Gnome-terminal"] move to workspace $wsp5 focus
+for_window [class="Nautilus"] move to workspace $wsp5 focus
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -243,7 +243,8 @@ bar {
 # Start up apps
 exec ~/apps/tor-browser_en-US/Browser/start-tor-browser --detach
 exec terminator
-exec xranger # start ranger in gnome-terminal (xranger.sh)
+exec nautilus
+# exec xranger # start ranger in gnome-terminal (xranger.sh)
 #exec google-chrome
 exec subl
 exec clementine
@@ -263,3 +264,13 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightne
 bindsym Pause exec clementine -t
 bindsym $mod+control+Delete exec clementine -f
 bindsym $mod+control+Insert exec clementine -r
+
+# Set wallpaper (need to install feh)
+exec_always feh --bg-scale ~/Pictures/wallpapers/paris_night.jpg
+
+# Set display mode
+#exec_always xrandr --output Virtual1 --mode 1360x768
+
+# Fix Nautilius issue on Ubuntu
+exec_always gsettings set org.gnome.desktop.background show-desktop-icons false
+exec_always gsettings set org.nemo.desktop show-desktop-icons false
