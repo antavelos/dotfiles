@@ -159,7 +159,8 @@ for_window [class="Terminator"] move to workspace $wsp1 focus
 for_window [class="qutebrowser"] move to workspace $wsp2 focus
 for_window [class="Sublime_text"] move to workspace $wsp3 focus
 for_window [class="Clementine"] move to workspace $wsp4 focus
-for_window [class="Nautilus"] move to workspace $wsp5 focus
+# for_window [class="Nautilus"] move to workspace $wsp5 focus
+for_window [class="Gnome-terminal"] move to workspace $wsp5 focus
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -205,6 +206,8 @@ bindsym $mod+r mode "resize"
 bar {
         #status_command i3status
         status_command i3blocks -c ~/.i3/i3blocks.conf
+        # status_command /home/alex/bumblebee-status/bumblebee-status -m nic disk:root cpu memory battery date time pasink pasource dnf -p root.path=/ time.format="%H:%M CW %V" date.format="%a, %b %d %Y" -t solarized-powerline
+
         font pango: Ubuntu, FontAwesome 11
         position bottom
         strip_workspace_numbers no
@@ -244,8 +247,8 @@ bar {
 # exec ~/apps/tor-browser_en-US/Browser/start-tor-browser --detach
 exec terminator
 exec qutebrowser
-exec nautilus
-# exec xranger # start ranger in gnome-terminal (xranger.sh)
+# exec nautilus
+exec xranger # start ranger in gnome-terminal (xranger.sh)
 #exec google-chrome
 exec subl
 exec clementine
@@ -256,7 +259,7 @@ bindsym $mod+control+l exec ~/.i3/lock.sh
 bindsym $mod+F1 exec nautilus ~/
 bindsym $mod+F2 exec lxappearance
 bindsym $mod+F12 exec systemctl suspend
-
+# bindsym $mod+F5 exec "terminator -x ranger" move to workspace $wsp5 focus
 # Control key bindings
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%-
