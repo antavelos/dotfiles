@@ -276,4 +276,4 @@ exec_always feh --bg-scale ~/Pictures/wallpapers/paris_night.jpg
 exec_always gsettings set org.gnome.desktop.background show-desktop-icons false
 exec_always gsettings set org.nemo.desktop show-desktop-icons false
 
-xset r rate 200 60
+exec xset r rate 200 60
