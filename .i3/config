@@ -156,7 +156,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 
 for_window [class="Terminator"] move to workspace $wsp1 focus
-for_window [class="Tor Browser"] move to workspace $wsp2 focus
+for_window [class="qutebrowser"] move to workspace $wsp2 focus
 for_window [class="Sublime_text"] move to workspace $wsp3 focus
 for_window [class="Clementine"] move to workspace $wsp4 focus
 for_window [class="Nautilus"] move to workspace $wsp5 focus
@@ -241,8 +241,9 @@ bar {
 #exec i3-config-wizard
 
 # Start up apps
-exec ~/apps/tor-browser_en-US/Browser/start-tor-browser --detach
+# exec ~/apps/tor-browser_en-US/Browser/start-tor-browser --detach
 exec terminator
+exec qutebrowser
 exec nautilus
 # exec xranger # start ranger in gnome-terminal (xranger.sh)
 #exec google-chrome
@@ -274,3 +275,5 @@ exec_always feh --bg-scale ~/Pictures/wallpapers/paris_night.jpg
 # Fix Nautilius issue on Ubuntu
 exec_always gsettings set org.gnome.desktop.background show-desktop-icons false
 exec_always gsettings set org.nemo.desktop show-desktop-icons false
+
+xset r rate 200 60
