@@ -1,15 +1,33 @@
 
-
-set nocompatible              " be iMproved, required
+set nocompatible              " required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" "call vundle#begin('~/some/path/here')
-" " let Vundle manage Vundle, required
-"
-" " All of your Plugins must be added before the following line
+
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+
+
+
+
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+
+
+" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " " To ignore plugin indent changes, instead use:
@@ -26,17 +44,45 @@ filetype plugin on
 " " see :h vundle for more details or wiki for FAQ
 " " Put your non-Plugin stuff after this line
 "
+
+set splitbelow
+set splitright
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+let g:SimpylFold_docstring_preview=1
+
 set number         "This turns on line numbering 
 "set hlsearch
 set history=100
 set t_Co=256
-set cc=120
+set cc=80,120
 
 set buftype=""
-"set ts=4 sw=4
-set tabstop=4 
+" au BufNewFile,BufRead *.py
+set tabstop=4
+set softtabstop=4
 set shiftwidth=4
-set expandtab 
+set textwidth=79
+set expandtab
+set autoindent
+set fileformat=unix
+
+" au BufNewFile,BufRead *.js, *.html, *.css
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+
+" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+set encoding=utf-8
+
+let python_highlight_all=1
+syntax on
+
 "set smarttab
 " Pathogen
 execute pathogen#infect()
@@ -49,6 +95,8 @@ colorscheme hybrid_reverse
 let NERDTreeShowHidden=1
 " Give a shortcut key to NERD Tree
 let nerdtree_tabs_open_on_console_startup=1
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
 map <F2> :NERDTreeTabsToggle<CR>
 map <leader>rr :source ~/.vimrc<CR>
 map  <C-Right> :tabn<CR>
@@ -69,3 +117,7 @@ vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
+
+
+" Enable folding with the spacebar
+nnoremap <space> za

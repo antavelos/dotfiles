@@ -83,4 +83,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Aliases
+alias coda='cd ~/data/dev/codabox'
+alias codav='cd ~/data/dev/codabox && vim'
+alias codas='cd ~/data/dev/codabox && subl'
+alias vv='vim ~/.vimrc'
+alias vz='vim ~/.zshrc'
+
+
 screenfetch
