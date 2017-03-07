@@ -126,3 +126,10 @@ nnoremap <F4> :NumbersOnOff<CR>
 
 " Enable folding with the spacebar
 nnoremap <space> za
+
+" Remove spaces at the end of the line 
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
+" Side map
+nmap <F8> :TagbarToggle<CR>
+
