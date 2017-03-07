@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# list wifis
+nmcli -d wifi
+
+# connect to wifi with password
+nmlci -d wifi $1 password $2
+
+

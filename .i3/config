@@ -156,7 +156,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 
 for_window [class="Terminator"] move to workspace $wsp1 focus
-for_window [class="Google-chrome"] move to workspace $wsp2 focus
+for_window [class="Gssoogle-chrome"] move to workspace $wsp2 focus
 for_window [class="Sublime_text"] move to workspace $wsp3 focus
 for_window [class="Clementine"] move to workspace $wsp4 focus
 # for_window [class="Nautilus"] move to workspace $wsp5 focus

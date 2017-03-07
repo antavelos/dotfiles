@@ -19,6 +19,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'ryanoasis/vim-devicons'
 
 
 
@@ -74,11 +75,15 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
+let mapleader=","
+
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 set encoding=utf-8
+
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 10
 
 let python_highlight_all=1
 syntax on
