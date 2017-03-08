@@ -265,9 +265,13 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%-
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
-bindsym Pause exec clementine -t
+bindsym control+Pause exec clementine -t
 bindsym $mod+control+Delete exec clementine -f
 bindsym $mod+control+Insert exec clementine -r
+
+bindsym Pause exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause" 
+bindsym control+Delete exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next" 
+bindsym control+Insert exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous" 
 
 # Set wallpaper (need to install feh)
 exec_always feh --bg-scale ~/Pictures/wallpapers/paris_night.jpg

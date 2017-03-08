@@ -20,7 +20,7 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'ryanoasis/vim-devicons'
-
+Plugin 'mhinz/vim-grepper'
 
 
 
@@ -102,6 +102,9 @@ let NERDTreeShowHidden=1
 let nerdtree_tabs_open_on_console_startup=1
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
+" let g:NERDTreeDirArrowExpandable = ' '
+" let g:NERDTreeDirArrowCollapsible = ' '
+
 map <F2> :NERDTreeTabsToggle<CR>
 map <leader>rr :source ~/.vimrc<CR>
 map  <C-Right> :tabn<CR>
@@ -145,3 +148,4 @@ command -nargs=0 -bar Update if &modified
 nnoremap <silent> <C-S> :<C-u>Update<CR>
 inoremap <C-S> <Esc>:Update<CR>
 
+nnoremap F :Grepper<CR>

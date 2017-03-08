@@ -90,6 +90,7 @@ alias codav='cd ~/data/dev/codabox && vim'
 alias codas='cd ~/data/dev/codabox && subl'
 alias vv='vim ~/.vimrc'
 alias vz='vim ~/.zshrc'
+alias v3='vim ~/.i3/config'
 
 
 screenfetch
