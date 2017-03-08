@@ -23,7 +23,8 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'mhinz/vim-grepper'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
 
 
 
@@ -162,3 +163,7 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
