@@ -93,3 +93,4 @@ alias vz='vim ~/.zshrc'
 
 
 screenfetch
+stty -ixon
