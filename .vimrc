@@ -110,6 +110,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 " let g:NERDTreeDirArrowCollapsible = ' '
 
 map <F2> :NERDTreeTabsToggle<CR>
+nnoremap <tab><tab> <c-w><c-w>
 map <leader>rr :source ~/.vimrc<CR>
 map  <C-Right> :tabn<CR>
 map  <C-Left> :tabp<CR>

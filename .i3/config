@@ -159,7 +159,9 @@ for_window [class="Google-chrome"] move to workspace $wsp2 focus
 for_window [class="Clementine"] move to workspace $wsp3 focus
 for_window [class="Spotify"] move to workspace $wsp3 focus
 for_window [class="Smplayer"] move to workspace $wsp3 focus
+for_window [class="mpv"] move to workspace $wsp3 focus
 for_window [class="Slack"] move to workspace $wsp4 focus
+for_window [class="yakyak"] move to workspace $wsp4 focus
 # for_window [class="Nautilus"] move to workspace $wsp5 focus
 for_window [class="Gnome-terminal"] move to workspace $wsp1 focus
 # reload the configuration file
