@@ -7,8 +7,23 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="cobalt2"
+ZSH_THEME="bullet-train"
 
+# Override BulletTrain theme settings
+BULLETTRAIN_EXIT_SHOW=true
+BULLETTRAIN_PROMPT_CHAR= 
+BULLETTRAIN_TIME_BG=magenta
+BULLETTRAIN_TIME_FG=white
+ZSH_THEME_GIT_PROMPT_UNTRACKED=” %F{magenta}✭%F{black}”
+BULLETTRAIN_PROMPT_ORDER=(
+  status
+  custom
+  context
+  dir
+  virtualenv
+  git
+  cmd_exec_time
+)
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
