@@ -101,6 +101,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Aliases
 alias coda='cd ~/data/dev/codabox'
+alias ccoda='cd ~/data/dev/codabox/codabox/'
 alias codav='cd ~/data/dev/codabox && vim'
 alias codas='cd ~/data/dev/codabox && subl'
 alias vv='vim ~/.vimrc'

@@ -14,8 +14,9 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
+" Plugin 'scrooloose/syntastic'
+Plugin 'andviro/flake8-vim'
+" Plugin 'nvie/vim-flake8'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -25,7 +26,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
-
+Plugin 'scrooloose/nerdcommenter'
 
 
 
@@ -80,6 +81,10 @@ set softtabstop=2
 set shiftwidth=2
 
 let mapleader=","
+
+
+" PyFlakes
+let g:PyFlakeCWindow=0
 
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -171,4 +176,4 @@ endif
 
 command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
 
-autocmd BufWritePost * Silent /media/alex/Data/dev/codabox/code_reload.sh <afile>
+autocmd BufWritePost *.py Silent /media/alex/Data/dev/codabox/code_reload.sh <afile>
