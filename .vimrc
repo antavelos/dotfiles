@@ -13,7 +13,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 " Plugin 'scrooloose/syntastic'
 Plugin 'andviro/flake8-vim'
 " Plugin 'nvie/vim-flake8'
@@ -27,7 +27,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
 Plugin 'scrooloose/nerdcommenter'
-
+Plugin 'ervandew/supertab'
 
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
@@ -89,6 +89,19 @@ let g:PyFlakeCWindow=0
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Pymode
+" Override go-to.definition key shortcut to Ctrl-]
+let g:pymode_rope_goto_definition_bind = "<C-]>"
+
+" Override run current python file key shortcut to Ctrl-Shift-e
+let g:pymode_run_bind = "<C-S-e>"
+
+" Override view python doc key shortcut to Ctrl-Shift-d
+let g:pymode_doc_bind = "<C-S-d>"
+
+" Nepcomplete
+let g:neocomplete#enable_at_startup=1
 
 set encoding=utf-8
 
