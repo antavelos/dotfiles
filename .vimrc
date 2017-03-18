@@ -28,7 +28,7 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'ervandew/supertab'
-
+Plugin 'chriskempson/base16-vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
@@ -117,7 +117,7 @@ call pathogen#helptags() " generate helptags for everything in ‘runtimepath’
 
 syntax enable
 set background=dark
-colorscheme hybrid_reverse
+colorscheme hybrid_material
 
 let NERDTreeShowHidden=1
 " Give a shortcut key to NERD Tree
