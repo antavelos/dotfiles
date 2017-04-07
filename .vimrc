@@ -122,7 +122,7 @@ colorscheme hybrid_material
 let NERDTreeShowHidden=1
 " Give a shortcut key to NERD Tree
 let nerdtree_tabs_open_on_console_startup=1
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+let NERDTreeIgnore=['\.pyc$', '\.swp$', '\.swo$'] "ignore files in NERDTree
 
 " let g:NERDTreeDirArrowExpandable = ' '
 " let g:NERDTreeDirArrowCollapsible = ' '
@@ -189,4 +189,4 @@ endif
 
 command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
 
-autocmd BufWritePost *.py Silent /media/alex/Data/dev/codabox/code_reload.sh <afile>
+autocmd BufWritePost *.py Silent /media/alex/Data/dev/codabox/coda_reload.sh <afile>
