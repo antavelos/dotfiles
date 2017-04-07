@@ -1,0 +1,17 @@
+#!/bin/sh
+
+ACTION=${1}
+
+case ${ACTION} in
+  list)
+    nmcli d wifi 
+    ;;
+  connect)
+    nmcli d wifi connect ${2} password ${3}
+    ;;
+  *)
+    echo Invalid command
+    exit 1
+    ;;
+esac
+
