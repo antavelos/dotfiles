@@ -29,6 +29,9 @@ Plugin 'xolox/vim-session'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'ervandew/supertab'
 Plugin 'chriskempson/base16-vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'myusuf3/numbers.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
@@ -186,6 +189,28 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+let g:session_autoload = 'no'
+
+
+" Called once right before you start selecting multiple cursors
+function! Multiple_cursors_before()
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
+endfunction
+
+" Called once only when the multiple selection is canceled (default <Esc>)
+function! Multiple_cursors_after()
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
+endfunction
+
+" Default highlighting (see help :highlight and help :highlight-link)
+highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
+highlight link multiple_cursors_visual Visual
+
 
 command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
 
