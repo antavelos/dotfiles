@@ -171,7 +171,7 @@ command -nargs=0 -bar Update if &modified
                            \|    else
                            \|        confirm write
                            \|    endif
-                           Slack\|endif
+                           \|endif
 nnoremap <silent> <C-S> :<C-u>Update<CR>
 inoremap <C-S> <Esc>:Update<CR>
 
