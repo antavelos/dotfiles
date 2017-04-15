@@ -264,7 +264,7 @@ exec guake
 exec compton -f
 
 # App key bindings
-bindsym $mod+control+l exec ~/.i3/lock.sh
+bindsym $mod+control+l exec ~/.config/i3/lock.sh
 bindsym $mod+F1 exec thunar ~/
 bindsym $mod+F2 exec lxappearance
 bindsym $mod+F12 exec systemctl suspend
