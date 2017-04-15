@@ -14,7 +14,7 @@ BULLETTRAIN_EXIT_SHOW=true
 BULLETTRAIN_PROMPT_CHAR= 
 BULLETTRAIN_TIME_BG=magenta
 BULLETTRAIN_TIME_FG=white
-ZSH_THEME_GIT_PROMPT_UNTRACKED=” %F{magenta}✭%F{black}”
+ZSH_THEME_GIT_PROMPT_UNTRACKED=”%F{magenta}✭%F{black}”
 BULLETTRAIN_PROMPT_ORDER=(
   status
   custom
@@ -100,14 +100,14 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Aliases
-alias coda='cd ~/data/dev/codabox'
-alias ccoda='cd ~/data/dev/codabox/codabox/'
-alias codav='cd ~/data/dev/codabox && vim'
-alias codas='cd ~/data/dev/codabox && subl'
+alias coda='cd ~/data/dev/work/codabox'
+alias ccoda='cd ~/data/dev/work/codabox/codabox/'
+alias codav='cd ~/data/dev/work/codabox && vim'
+alias codas='cd ~/data/dev/work/codabox && subl'
 alias vv='vim ~/.vimrc'
 alias vz='vim ~/.zshrc'
 alias sz='source ~/.zshrc'
-alias v3='vim ~/.i3/config'
+alias v3='vim ~/.config/i3/config'
 alias pgr='ps -ef | grep '
 alias dot='cd /mnt/data/dev/dotfiles'
 

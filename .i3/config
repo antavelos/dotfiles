@@ -55,7 +55,7 @@ floating_modifier $mod
 for_window [class="^.*"] border pixel 1
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec termite # i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+q kill
@@ -159,6 +159,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 
 for_window [class="Terminator"] move to workspace $wsp1 focus
+for_window [class="Tilda"] move to workspace $wsp1 focus
+for_window [class="Termite"] move to workspace $wsp1 focus
 for_window [class="Chromium"] move to workspace $wsp2 focus
 for_window [class="Clementine"] move to workspace $wsp3 focus
 for_window [class="Spotify"] move to workspace $wsp3 focus
@@ -253,7 +255,8 @@ bar {
 
 # Start up apps
 # exec ~/apps/tor-browser_en-US/Browser/start-tor-browser --detach
-exec terminator
+#exec terminator
+exec termite
 # exec qutebrowser
 # exec nautilus
 # exec xranger # start ranger in gnome-terminal (xranger.sh)
