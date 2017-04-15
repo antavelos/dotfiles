@@ -32,7 +32,8 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'myusuf3/numbers.vim'
-
+Plugin 'delimitMate.vim'
+Plugin 'easymotion/vim-easymotion'
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
 
@@ -170,7 +171,7 @@ command -nargs=0 -bar Update if &modified
                            \|    else
                            \|        confirm write
                            \|    endif
-                           \|endif
+                           Slack\|endif
 nnoremap <silent> <C-S> :<C-u>Update<CR>
 inoremap <C-S> <Esc>:Update<CR>
 

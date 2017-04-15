@@ -109,6 +109,7 @@ alias vz='vim ~/.zshrc'
 alias sz='source ~/.zshrc'
 alias v3='vim ~/.i3/config'
 alias pgr='ps -ef | grep '
+alias dot='cd /mnt/data/dev/dotfiles'
 
-screenfetch
+archey3
 stty -ixon
