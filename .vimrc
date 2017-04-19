@@ -128,8 +128,8 @@ let NERDTreeShowHidden=1
 let nerdtree_tabs_open_on_console_startup=1
 let NERDTreeIgnore=['\.pyc$', '\.swp$', '\.swo$'] "ignore files in NERDTree
 
-" let g:NERDTreeDirArrowExpandable = ' '
-" let g:NERDTreeDirArrowCollapsible = ' '
+"let g:NERDTreeDirArrowExpandable = ' '
+"let g:NERDTreeDirArrowCollapsible = ' '
 
 map <F2> :NERDTreeTabsToggle<CR>
 nnoremap <tab><tab> <c-w><c-w>
