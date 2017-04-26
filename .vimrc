@@ -215,4 +215,4 @@ highlight link multiple_cursors_visual Visual
 
 command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
 
-autocmd BufWritePost *.py Silent /media/alex/Data/dev/codabox/coda_reload.sh <afile>
+autocmd BufWritePost *.py Silent /mnt/data/dev/work/codabox/coda_reload.sh <afile>
