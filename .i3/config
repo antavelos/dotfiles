@@ -326,7 +326,7 @@ bindsym control+Pause exec clementine -t
 bindsym $mod+control+Delete exec clementine -f
 bindsym $mod+control+Insert exec clementine -r
 
-bindsym Pause exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause" 
+bindsym control+BackSpace exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause" 
 bindsym control+Delete exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next" 
 bindsym control+Insert exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous" 
 

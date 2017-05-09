@@ -121,7 +121,7 @@ call pathogen#helptags() " generate helptags for everything in ‘runtimepath’
 
 syntax enable
 set background=dark
-colorscheme basic-dark
+colorscheme wombat256dave
 
 let NERDTreeShowHidden=1
 " Give a shortcut key to NERD Tree
