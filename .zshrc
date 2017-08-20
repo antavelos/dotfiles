@@ -100,16 +100,16 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Aliases
-alias coda='cd ~/data/dev/work/codabox'
-alias ccoda='cd ~/data/dev/work/codabox/codabox/'
-alias codav='cd ~/data/dev/work/codabox && vim'
-alias codas='cd ~/data/dev/work/codabox && subl'
+alias coda='cd ~/dev/work/codabox'
+alias ccoda='cd ~/dev/work/codabox/codabox/'
+alias codav='cd ~/dev/work/codabox && vim'
+alias codas='cd ~/dev/work/codabox && subl'
 alias vv='vim ~/.vimrc'
 alias vz='vim ~/.zshrc'
 alias sz='source ~/.zshrc'
 alias v3='vim ~/.config/i3/config'
 alias pgr='ps -ef | grep '
-alias dot='cd /mnt/data/dev/dotfiles'
+alias dot='cd ~/dev/dotfiles'
 
 # start ssh-agent
 SSH_ENV="$HOME/.ssh/environment"
