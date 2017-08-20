@@ -1,218 +1,225 @@
-
-set nocompatible              " required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-" Plugin 'Valloric/YouCompleteMe'
-" Plugin 'scrooloose/syntastic'
-Plugin 'andviro/flake8-vim'
-" Plugin 'nvie/vim-flake8'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'mhinz/vim-grepper'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-session'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'ervandew/supertab'
-Plugin 'chriskempson/base16-vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'kristijanhusak/vim-hybrid-material'
-Plugin 'myusuf3/numbers.vim'
-Plugin 'delimitMate.vim'
-Plugin 'easymotion/vim-easymotion'
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+  " Sample .vimrc file by Martin Brochhaus
+" Presented at PyCon APAC 2012
 
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" " To ignore plugin indent changes, instead use:
-filetype plugin on
-" "
-" " Brief help
-" " :PluginList       - lists configured plugins
-" " :PluginInstall    - installs plugins; append `!` to update or just
-" :PluginUpdate
-" " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" " :PluginClean      - confirms removal of unused plugins; append `!` to
-" auto-approve removal
-" "
-" " see :h vundle for more details or wiki for FAQ
-" " Put your non-Plugin stuff after this line
-"
+" Automatic reloading of .vimrc
+autocmd! bufwritepost .vimrc source %
 
-set splitbelow
-set splitright
 
-" Enable folding
-set foldmethod=indent
-set foldlevel=99
-let g:SimpylFold_docstring_preview=1
+" Better copy & paste
+" When you want to paste large blocks of code into vim, press F2 before you
+" paste. At the bottom you should see ``-- INSERT (paste) --``.
 
-set number         "This turns on line numbering 
-"set hlsearch
-set history=100
+set pastetoggle=<F2>
+set clipboard=unnamed
+
+
+" Mouse and backspace
+set mouse=a  " on OSX press ALT and click
+set bs=2     " make backspace behave like normal again
+
+
+" Rebind <Leader> key
+" I like to have it here becuase it is easier to reach than the default and
+" it is next to ``m`` and ``n`` which I use for navigating between tabs.
+let mapleader = ","
+
+
+" Bind nohl
+" Removes highlight of your last search
+" ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
+noremap <C-n> :nohl<CR>
+vnoremap <C-n> :nohl<CR>
+inoremap <C-n> :nohl<CR>
+
+
+" Quicksave command
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <C-O>:update<CR>
+
+
+" Quick quit command
+"" noremap <Leader>e :quit<CR>  " Quit current window
+"" noremap <Leader>E :qa!<CR>   " Quit all windows
+
+
+" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
+" Every unnecessary keystroke that can be saved is good for your health :)
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+
+" easier moving between tabs
+map <Leader>n <esc>:tabprevious<CR>
+map <Leader>m <esc>:tabnext<CR>
+
+
+" map sort function to a key
+vnoremap <Leader>s :sort<CR>
+
+
+" easier moving of code blocks
+" Try to go into visual mode (v), thenselect several lines of code here and
+" then press ``>`` several times.
+vnoremap < <gv  " better indentation
+vnoremap > >gv  " better indentation
+
+
+" Show whitespace
+" MUST be inserted BEFORE the colorscheme command
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertLeave * match ExtraWhitespace /\s\+$/
+
+
+" Color scheme
+" mkdir -p ~/.vim/colors && cd ~/.vim/colors
+" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 set t_Co=256
-set cc=80,120
+color wombat256mod
 
-set buftype=""
-" au BufNewFile,BufRead *.py
+
+" Enable syntax highlighting
+" You need to reload this file for the change to apply
+filetype off
+filetype plugin indent on
+syntax on
+ 
+
+" Showing line numbers and length
+set number  " show line numbers
+set tw=79   " width of document (used by gd)
+set nowrap  " don't automatically wrap on load
+set fo-=t   " don't automatically wrap text when typing
+set colorcolumn=80
+highlight ColorColumn ctermbg=233
+
+
+" easier formatting of paragraphs
+vmap Q gq
+nmap Q gqap
+
+
+" Useful settings
+set history=700
+set undolevels=700
+
+
+" Real programmers don't use TABs but spaces
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set textwidth=79
+set shiftround
 set expandtab
-set autoindent
-set fileformat=unix
-
-" au BufNewFile,BufRead *.js, *.html, *.css
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-
-let mapleader=","
 
 
-" PyFlakes
-let g:PyFlakeCWindow=0
-
-" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-" Pymode
-" Override go-to.definition key shortcut to Ctrl-]
-let g:pymode_rope_goto_definition_bind = "<C-]>"
-
-" Override run current python file key shortcut to Ctrl-Shift-e
-let g:pymode_run_bind = "<C-S-e>"
-
-" Override view python doc key shortcut to Ctrl-Shift-d
-let g:pymode_doc_bind = "<C-S-d>"
-
-" Nepcomplete
-let g:neocomplete#enable_at_startup=1
-
-set encoding=utf-8
-
-set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 10
-
-let python_highlight_all=1
-syntax on
-
-"set smarttab
-" Pathogen
-execute pathogen#infect()
-call pathogen#helptags() " generate helptags for everything in ‘runtimepath’
-
-syntax enable
-set background=dark
-colorscheme wombat256dave
-
-let NERDTreeShowHidden=1
-" Give a shortcut key to NERD Tree
-let nerdtree_tabs_open_on_console_startup=1
-let NERDTreeIgnore=['\.pyc$', '\.swp$', '\.swo$'] "ignore files in NERDTree
-
-"let g:NERDTreeDirArrowExpandable = ' '
-"let g:NERDTreeDirArrowCollapsible = ' '
-
-map <F2> :NERDTreeTabsToggle<CR>
-nnoremap <tab><tab> <c-w><c-w>
-map <leader>rr :source ~/.vimrc<CR>
-map  <C-Right> :tabn<CR>
-map  <C-Left> :tabp<CR>
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
-inoremap <C-j> <Esc>:m .+1<CR>==gi
-inoremap <C-k> <Esc>:m .-2<CR>==gi
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
-
-" moving lines around
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
-nnoremap <F3> :NumbersToggle<CR>
-nnoremap <F4> :NumbersOnOff<CR>
+" Make search case insensitive
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
 
 
-" Enable folding with the spacebar
-nnoremap <space> za
+" Disable stupid backup and swap files - they trigger too many events
+" for file system watchers
+set nobackup
+set nowritebackup
+set noswapfile
 
-" Remove spaces at the end of the line 
-nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
-" Side map
-nmap <F8> :TagbarToggle<CR>
+" Setup Pathogen to manage your plugins
+" mkdir -p ~/.vim/autoload ~/.vim/bundle
+" curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
+" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
+call pathogen#infect()
 
-" If the current buffer has never been saved, it will have no name,
-" call the file browser to save it, otherwise just save it.
-command -nargs=0 -bar Update if &modified 
-                           \|    if empty(bufname('%'))
-                           \|        browse confirm write
-                           \|    else
-                           \|        confirm write
-                           \|    endif
-                           \|endif
-nnoremap <silent> <C-S> :<C-u>Update<CR>
-inoremap <C-S> <Esc>:Update<CR>
 
-nnoremap F :Grepper<CR>
+" ============================================================================
+" Python IDE Setup
+" ============================================================================
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
 
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" Settings for vim-powerline
+" cd ~/.vim/bundle
+" git clone git://github.com/Lokaltog/vim-powerline.git
+set laststatus=2
 
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Settings for ctrlp
+" cd ~/.vim/bundle
+" git clone https://github.com/kien/ctrlp.vim.git
+let g:ctrlp_max_height = 30
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=*/coverage/*
+
+ 
+" Settings for python-mode
+" Note: I'm no longer using this. Leave this commented out
+" and uncomment the part about jedi-vim instead
+" cd ~/.vim/bundle
+" git clone https://github.com/klen/python-mode
+map <Leader>g :call RopeGotoDefinition()<CR>
+let ropevim_enable_shortcuts = 1
+let g:pymode_rope_goto_def_newwin = "vnew"
+let g:pymode_rope_extended_complete = 1
+let g:pymode_breakpoint = 0
+let g:pymode_syntax = 1
+let g:pymode_syntax_builtin_objs = 0
+let g:pymode_syntax_builtin_funcs = 0
+map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+
+" Settings for jedi-vim
+" cd ~/.vim/bundle
+" git clone git://github.com/davidhalter/jedi-vim.git
+let g:jedi#usages_command = "<leader>z"
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+let g:jedi#use_tabs_not_buffers = 1
+map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+
+" Better navigating through omnicomplete option list
+" See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
+set completeopt=longest,menuone
+function! OmniPopup(action)
+    if pumvisible()
+        if a:action == 'j'
+            return "\<C-N>"
+        elseif a:action == 'k'
+            return "\<C-P>"
+        endif
+    endif
+    return a:action
+endfunction
+
+inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
+inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
+
+
+" Python folding
+" mkdir -p ~/.vim/ftplugin
+" wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
+set nofoldenable
+
+set rtp+=/home/jonathan/github/powerline/bindings/vim
+
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
 endif
 
-let g:session_autoload = 'no'
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup 
 
-
-" Called once right before you start selecting multiple cursors
-function! Multiple_cursors_before()
-  if exists(':NeoCompleteLock')==2
-    exe 'NeoCompleteLock'
-  endif
-endfunction
-
-" Called once only when the multiple selection is canceled (default <Esc>)
-function! Multiple_cursors_after()
-  if exists(':NeoCompleteUnlock')==2
-    exe 'NeoCompleteUnlock'
-  endif
-endfunction
-
-" Default highlighting (see help :highlight and help :highlight-link)
-highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
-highlight link multiple_cursors_visual Visual
-
-
-command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
-
-autocmd BufWritePost *.py Silent /mnt/data/dev/work/codabox/coda_reload.sh <afile>
+" NERDTree Tabs
+let NERDTreeShowHidden=1
+let nerdtree_tabs_open_on_console_startup=1
+let NERDTreeIgnore=['\.pyc$', '\.swp', '\.swo$']
+map <C-\> :NERDTreeTabsToggle<CR>
