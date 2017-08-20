@@ -7,7 +7,7 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="bullet-train"
+ZSH_THEME="fino"
 
 # Override BulletTrain theme settings
 BULLETTRAIN_EXIT_SHOW=true
@@ -134,6 +134,7 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
+export GOPATH=$HOME/dev/go
+export PATH=$HOME/bin:/usr/local/bin:$HOME/dev/go/bin:$PATH
 
-archey3
 stty -ixon
