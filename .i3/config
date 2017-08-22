@@ -201,10 +201,12 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 
-for_window [class="Terminator"] move to workspace $wsp1 focus
-for_window [class="Tilda"] move to workspace $wsp1 focus
-for_window [class="Termite"] move to workspace $wsp1 focus
+#for_window [class="Terminator"] move to workspace $wsp1 focus
+#for_window [class="Tilda"] move to workspace $wsp1 focus
+#for_window [class="Termite"] move to workspace $wsp1 focus
 for_window [class="Chromium"] move to workspace $wsp2 focus
+for_window [class="Firefox"] move to workspace $wsp2 focus
+for_window [class="Google-Chrome"] move to workspace $wsp2 focus
 for_window [class="Clementine"] move to workspace $wsp3 focus
 for_window [class="Spotify"] move to workspace $wsp3 focus
 for_window [class="Smplayer"] move to workspace $wsp3 focus
@@ -305,6 +307,7 @@ exec termite
 # exec nautilus
 # exec xranger # start ranger in gnome-terminal (xranger.sh)
 exec chromium
+#exec google-chrome-stable
 # exec subl
 # exec clementine
 exec spotify
@@ -315,6 +318,7 @@ exec compton -f
 bindsym $mod+control+l exec ~/.config/i3/lock.sh
 bindsym $mod+F1 exec thunar ~/
 bindsym $mod+F2 exec lxappearance
+bindsym $mod+F3 exec pavucontrol
 bindsym $mod+F12 exec systemctl suspend
 # bindsym $mod+F5 exec "terminator -x ranger" move to workspace $wsp5 focus
 # Control key bindings
@@ -326,9 +330,9 @@ bindsym control+Pause exec clementine -t
 bindsym $mod+control+Delete exec clementine -f
 bindsym $mod+control+Insert exec clementine -r
 
-bindsym control+BackSpace exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause" 
-bindsym control+Delete exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next" 
-bindsym control+Insert exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous" 
+bindsym control+F3 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next" 
+bindsym control+F1 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause" 
+bindsym control+F2 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous" 
 
 # Set wallpaper (need to install feh)
 exec_always feh --bg-scale ~/Pictures/wallpapers/city.png

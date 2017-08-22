@@ -11,7 +11,7 @@ ZSH_THEME="bullet-train"
 
 # Override BulletTrain theme settings
 BULLETTRAIN_EXIT_SHOW=true
-BULLETTRAIN_PROMPT_CHAR= 
+BULLETTRAIN_PROMPT_CHAR=
 BULLETTRAIN_TIME_BG=magenta
 BULLETTRAIN_TIME_FG=white
 ZSH_THEME_GIT_PROMPT_UNTRACKED=”%F{magenta}✭%F{black}”
@@ -102,7 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 alias coda='cd ~/data/dev/work/codabox'
 alias ccoda='cd ~/data/dev/work/codabox/codabox/'
-alias codav='cd ~/data/dev/work/codabox && vim'
+alias codav='cd ~/data/dev/work/codabox/codabox/project/apps && vim'
 alias codas='cd ~/data/dev/work/codabox && subl'
 alias vv='vim ~/.vimrc'
 alias vz='vim ~/.zshrc'
@@ -110,6 +110,8 @@ alias sz='source ~/.zshrc'
 alias v3='vim ~/.config/i3/config'
 alias pgr='ps -ef | grep '
 alias dot='cd /mnt/data/dev/dotfiles'
+alias dev='cd /mnt/data/dev/'
+alias ter='cd /mnt/data/dev/go/src/github.com/antavelos/terminews'
 
 # start ssh-agent
 SSH_ENV="$HOME/.ssh/environment"
@@ -134,6 +136,8 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
-
+export GOPATH=$HOME/data/dev/go
+PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/local/go/bin:$(go env GOPATH)/bin"
+export PATH
 archey3
 stty -ixon
