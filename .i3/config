@@ -158,9 +158,9 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 
-for_window [class="Terminator"] move to workspace $wsp1 focus
-for_window [class="Tilda"] move to workspace $wsp1 focus
-for_window [class="Termite"] move to workspace $wsp1 focus
+#for_window [class="Terminator"] move to workspace $wsp1 focus
+#for_window [class="Tilda"] move to workspace $wsp1 focus
+#for_window [class="Termite"] move to workspace $wsp1 focus
 for_window [class="Chromium"] move to workspace $wsp2 focus
 for_window [class="Clementine"] move to workspace $wsp3 focus
 for_window [class="Spotify"] move to workspace $wsp3 focus
