@@ -139,5 +139,9 @@ fi
 export GOPATH=$HOME/data/dev/go
 PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/local/go/bin:$(go env GOPATH)/bin"
 export PATH
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
+
+
 archey3
 stty -ixon
