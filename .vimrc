@@ -28,15 +28,15 @@ let mapleader = ","
 " Bind nohl
 " Removes highlight of your last search
 " ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
-noremap <C-n> :nohl<CR>
-vnoremap <C-n> :nohl<CR>
-inoremap <C-n> :nohl<CR>
+noremap <C-i> :nohl<CR>
+vnoremap <C-i> :nohl<CR>
+inoremap <C-i> :nohl<CR>
 
 
 " Quicksave command
-noremap <C-S> :update<CR>
-vnoremap <C-S> <C-C>:update<CR>
-inoremap <C-S> <C-O>:update<CR>
+noremap <C-S> :update<CR><Esc>
+vnoremap <C-S> <C-C>:update<CR><Esc>
+inoremap <C-S> <C-O>:update<CR><Esc>
 
 
 " Quick quit command
@@ -78,8 +78,9 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 set t_Co=256
-color zenburn
-
+set background=dark
+colorscheme hybrid_material
+let g:enable_bold_font = 1
 
 " Enable syntax highlighting
 " You need to reload this file for the change to apply
@@ -225,3 +226,12 @@ let NERDTreeShowHidden=1
 let nerdtree_tabs_open_on_console_startup=1
 let NERDTreeIgnore=['\.pyc$', '\.swp', '\.swo$']
 map <C-\> :NERDTreeTabsToggle<CR>
+
+
+" PyFlakes
+let g:PyFlakeCWindow=0
+
+command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
+
+" Codabox related
+autocmd BufWritePost *.py Silent /media/data/dev/work/codabox/coda_reload.sh <afile>

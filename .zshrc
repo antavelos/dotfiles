@@ -14,15 +14,16 @@ BULLETTRAIN_EXIT_SHOW=true
 BULLETTRAIN_PROMPT_CHAR=
 BULLETTRAIN_TIME_BG=magenta
 BULLETTRAIN_TIME_FG=white
+BULLETTRAIN_VIRTUALENV_PREFIX=
+BULLETTRAIN_VIRTUALENV_FG=black
 ZSH_THEME_GIT_PROMPT_UNTRACKED=”%F{magenta}✭%F{black}”
 BULLETTRAIN_PROMPT_ORDER=(
   status
   custom
+  virtualenv
   context
   dir
-  virtualenv
   git
-  cmd_exec_time
 )
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -142,6 +143,6 @@ export PATH
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
-
+xset -b
 archey3
 stty -ixon
