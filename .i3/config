@@ -258,28 +258,28 @@ bindsym $mod+r mode "resize"
 
 
 
-#bar {
-        ##status_command i3status
-        ##status_command i3blocks -c ~/.config/i3/i3blocks.conf
-        ## status_command /home/alex/bumblebee-status/bumblebee-status -m nic disk:root cpu memory battery date time pasink pasource dnf -p root.path=/ time.format="%H:%M CW %V" date.format="%a, %b %d %Y" -t solarized-powerline
+# bar {
+#         #status_command i3status
+#         #status_command i3blocks -c ~/.config/i3/i3blocks.conf
+#         # status_command /home/alex/bumblebee-status/bumblebee-status -m nic disk:root cpu memory battery date time pasink pasource dnf -p root.path=/ time.format="%H:%M CW %V" date.format="%a, %b %d %Y" -t solarized-powerline
 
-        #font pango: Terminus 13
-        #position top
-        #strip_workspace_numbers no
-        #height 25
-        ##bindsym button4 nop
-        ##bindsym button5 nop
-        #colors {
-              #separator $base03
-              #background $base01
-              #statusline $base05
-##                        border  background text
-              #focused_workspace  $base01 $base01    $base07
-              #active_workspace   $base01 $base02    $base03
-              #inactive_workspace $base01 $base01    $base03
-              #urgent_workspace   $base01 $base01    $base08
-    #}
-#}
+#         font pango: Roboto Mono 13
+#         position top
+#         strip_workspace_numbers no
+#         height 25
+#         #bindsym button4 nop
+#         #bindsym button5 nop
+#         colors {
+#               separator $base03
+#               background $base01
+#               statusline $base05
+# #                        border  background text
+#               focused_workspace  $base01 $base01    $base07
+#               active_workspace   $base01 $base02    $base03
+#               inactive_workspace $base01 $base01    $base03
+#               urgent_workspace   $base01 $base01    $base08
+#     }
+# }
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -330,16 +330,20 @@ bindsym control+Pause exec clementine -t
 bindsym $mod+control+Delete exec clementine -f
 bindsym $mod+control+Insert exec clementine -r
 
-bindsym control+F3 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next" 
-bindsym control+F1 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause" 
-bindsym control+F2 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous" 
+bindsym control+F3 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+bindsym control+F1 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+bindsym control+F2 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 
 # Set wallpaper (need to install feh)
-exec_always feh --bg-scale ~/Pictures/wallpapers/rm2.png
+exec_always feh --bg-scale $DATAPATH/pictures//wallpapers/rm2.png
 
 # Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-# Set display mode
-#exec_always xrandr --output Virtual1 --mode 1360x768
 
-exec xset r rate 200 50
+# Disable touchpad
+# exec_always synclient TouchpadOff=1
+
+# Set display mode
+exec_always xrandr --output Virtual1 --mode 1360x768
+
+exec_always xset r rate 200 50
