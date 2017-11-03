@@ -98,7 +98,6 @@ label-indicator-padding = 1
 label-indicator-background = ${colors.dpink}
 # label-indicator-underline = ${colors.pink}
 
-
 [module/i3]
 type = internal/i3
 index-sort = true
@@ -244,6 +243,7 @@ interface = wlp3s0
 
 label-connected =  %essid%
 label-disconnected = 
+format-connected-background = ${colors.dgreen}
 
 
 [module/longwlan]
@@ -290,10 +290,10 @@ label-disconnected = 
 type = internal/date
 interval = 1
 
-date = %Y-%m-%d %A
-time = %H:%M:%S
+date = %a %d %b
+time = %H:%M
 
-label =  %time%
+label =  %date%, %time%
 format-padding = 1
 # format-underline = ${colors.cyan}
 format-background = ${colors.dcyan}
@@ -361,13 +361,16 @@ type = internal/battery
 battery = BAT0
 adapter = AC
 full-at = 97
+time-format = %H:%M
 
+label-charging = %time%
 format-charging = <animation-charging> <label-charging>
 format-charging-padding = 1
 # format-charging-background = ${colors.white}
 format-charging-foreground = ${colors.green}
 # format-charging-underline = ${colors.cyan}
 
+label-discharging = %time%
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-padding = 1
 # format-discharging-background = ${colors.dcyan}
@@ -396,6 +399,7 @@ ramp-capacity-3-foreground = ${colors.dgreen}
 ramp-capacity-4 = 
 ramp-capacity-4-foreground = ${colors.green}
 
+
 [module/battery2]
 inherit = module/battery1
 battery = BAT1
@@ -406,7 +410,7 @@ type = custom/menu
 
 format-spacing = 1
 
-label-open = " "
+label-open = " "
 label-open-foreground = ${colors.pink}
 label-close =  cancel
 label-close-foreground = ${colors.pink}
@@ -442,9 +446,9 @@ format-background = ${colors.dorange}
 type = custom/script
 exec = $HOME/.config/polybar/weather.py
 interval = 600
-label =  %output%
+label = %output%
 format-padding = 1
-format-background = ${colors.dgreen}
+# format-background = ${colors.dgreen}
 # format-underline = ${colors.green}
 
 

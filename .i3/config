@@ -315,6 +315,7 @@ exec guake
 exec compton -f
 
 # App key bindings
+bindsym $mod+control+space exec $DATAPATH/dev/dotfiles/scripts/layout.sh
 bindsym $mod+control+l exec ~/.config/i3/lock.sh
 bindsym $mod+F1 exec thunar ~/
 bindsym $mod+F2 exec lxappearance
@@ -344,6 +345,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # exec_always synclient TouchpadOff=1
 
 # Set display mode
-exec_always xrandr --output Virtual1 --mode 1360x768
+# exec_always xrandr --output Virtual1 --mode 1360x768
 
+exec_always xmodmap $HOME/.Xmodmap
 exec_always xset r rate 200 50
