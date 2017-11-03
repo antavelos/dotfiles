@@ -61,7 +61,7 @@ tray-maxsize=24
 
 modules-left = i3 music weather
 modules-center =
-modules-right = battery1 volume backlight filesystem memory cpu temperature wlan eth  xkeyboard date powermenu
+modules-right = battery1 volume backlight filesystem memory cpu temperature wlan eth xkeyboard date powermenu
 
 
 [bar/secondary]
@@ -91,7 +91,7 @@ blacklist-0 = num lock
 
 label-layout =  %layout%
 label-layout-padding = 1
-label-layout-background = ${colors.dgreen}
+label-layout-background = ${colors.dcyan}
 # label-layout-underline = ${colors.green}
 
 label-indicator-padding = 1
@@ -363,14 +363,14 @@ adapter = AC
 full-at = 97
 time-format = %H:%M
 
-label-charging = %time%
+label-charging = %percentage%%
 format-charging = <animation-charging> <label-charging>
 format-charging-padding = 1
 # format-charging-background = ${colors.white}
 format-charging-foreground = ${colors.green}
 # format-charging-underline = ${colors.cyan}
 
-label-discharging = %time%
+label-discharging = %percentage%% %time%
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-padding = 1
 # format-discharging-background = ${colors.dcyan}
