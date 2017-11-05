@@ -31,7 +31,7 @@ margin-bottom = 5
 
 
 [bar/example]
-monitor = ${env:MONITOR:DP-2-1}
+#monitor = ${env:MONITOR:HDMI1}
 monitor-fallback = ${env:MONITOR:eDP-1}
 dpi = ${xrdb:Xft.dpi:136}
 bottom = false
@@ -43,16 +43,16 @@ offset-y = 0
 foreground = ${colors.foreground}
 background = ${colors.background}
 
-# underline-size = 3
+underline-size = 3
 
 padding-left = 0
 padding-right = 0
 module-margin-left = 0
 module-margin-right = 1
 
-font-0 = Inconsolata:fontformat=truetype:size=13:heavy;3
-font-1 = FontAwesome:fontformat=truetype:size=14;3
-font-2 = Unifont:fontformat=truetype:size=13;3
+font-0 = Inconsolata:fontformat=truetype:size=10:heavy;3
+font-1 = FontAwesome:fontformat=truetype:size=12;3
+font-2 = Unifont:fontformat=truetype:size=11;3
 
 tray-position = right
 tray-padding = 0
@@ -61,7 +61,7 @@ tray-maxsize=24
 
 modules-left = i3 music weather
 modules-center =
-modules-right = battery1 volume backlight filesystem memory cpu temperature wlan eth xkeyboard date powermenu
+modules-right = battery1 wlan eth volume backlight filesystem memory cpu temperature xkeyboard date powermenu
 
 
 [bar/secondary]
@@ -91,30 +91,30 @@ blacklist-0 = num lock
 
 label-layout =  %layout%
 label-layout-padding = 1
-label-layout-background = ${colors.dcyan}
-# label-layout-underline = ${colors.green}
+#label-layout-background = ${colors.dcyan}
+label-layout-underline = ${colors.orange}
 
 label-indicator-padding = 1
 label-indicator-background = ${colors.dpink}
-# label-indicator-underline = ${colors.pink}
+# label-indicator-underline = ${colors.orange}
 
 [module/i3]
 type = internal/i3
 index-sort = true
 wrapping-scroll = false
-pin-workspaces = true
+pin-workspaces = false
 strip-wsnumbers = false
 
 format = <label-state> <label-mode>
 
 label-mode-padding = 1
 label-mode-background = ${colors.dpink}
-# label-mode-underline = ${colors.pink}
+# label-mode-underline = ${colors.orange}
 
 label-focused = %icon%
 label-focused-padding = 1
-label-focused-background = ${colors.dcyan}
-# label-focused-underline = ${colors.cyan}
+# label-focused-background = ${colors.dcyan}
+label-focused-underline = ${colors.orange}
 
 label-unfocused = %icon%
 label-unfocused-padding = 1
@@ -122,12 +122,12 @@ label-unfocused-padding = 1
 label-urgent = %icon%
 label-urgent-padding = 1
 label-urgent-background = ${colors.dpink}
-# label-urgent-underline = ${colors.pink}
+# label-urgent-underline = ${colors.orange}
 
 label-visible = %icon%
 label-visible-padding = 1
 label-visible-background = ${colors.dcyan}
-# label-visible-underline = ${colors.dcyan}
+# label-visible-underline = ${colors.orange}
 
 ws-icon-0 = 1;1
 ws-icon-1 = 2;2
@@ -149,8 +149,8 @@ interval = 2
 label =  %percentage%%
 format = <label>
 format-padding = 1
-format-background = ${colors.dcyan}
-# format-underline = ${colors.cyan}
+#format-background = ${colors.dcyan}
+format-underline = ${colors.orange}
 
 ramp-coreload-0 = ▁
 ramp-coreload-1 = ▂
@@ -171,14 +171,14 @@ warn-temperature = 60
 label = %temperature%
 format = <ramp> <label>
 format-padding = 1
-format-background = ${colors.dcyan}
-# format-underline = ${colors.cyan}
+#format-background = ${colors.dcyan}
+format-underline = ${colors.orange}
 
 label-warn = %temperature%
 format-warn = <ramp> <label-warn>
 format-warn-padding = 1
 format-warn-background = ${colors.dpink}
-# format-warn-underline = ${colors.pink}
+# format-warn-underline = ${colors.orange}
 
 ramp-0 = 
 ramp-1 = 
@@ -193,8 +193,8 @@ interval = 2
 
 label =  %percentage_used%%
 format-padding = 1
-format-background = ${colors.dcyan}
-# format-underline = ${colors.cyan}
+#format-background = ${colors.dcyan}
+format-underline = ${colors.orange}
 
 
 [module/filesystem]
@@ -205,8 +205,8 @@ mount-0 = /
 
 label-mounted =  %free%
 format-mounted-padding = 1
-format-mounted-background = ${colors.dcyan}
-# format-mounted-underline = ${colors.cyan}
+#format-mounted-background = ${colors.dcyan}
+format-mounted-underline = ${colors.orange}
 
 label-unmounted =   %mountpoint%
 format-unmounted-padding = 1
@@ -219,13 +219,13 @@ type = internal/network
 interval = 3.0
 
 format-connected = <label-connected> <ramp-signal>
-format-connected-padding = 1
-format-connected-background = ${colors.dpurple}
-# format-connected-underline = ${colors.purple}
+format-connected-padding = 0
+format-connected-foreground = ${colors.green}
+format-connected-background = ${colors.background}
 
-format-disconnected-padding = 1
-format-disconnected-background = ${colors.dpink}
-# format-disconnected-underline = ${colors.pink}
+format-disconnected-padding = 0
+format-disconnected-foreground = ${colors.pink}
+format-disconnected-background = ${colors.background}
 
 ramp-signal-0 = ▁
 ramp-signal-1 = ▂
@@ -243,7 +243,6 @@ interface = wlp3s0
 
 label-connected =  %essid%
 label-disconnected = 
-format-connected-background = ${colors.dgreen}
 
 
 [module/longwlan]
@@ -295,8 +294,8 @@ time = %H:%M
 
 label =  %date%, %time%
 format-padding = 1
-# format-underline = ${colors.cyan}
-format-background = ${colors.dcyan}
+format-underline = ${colors.orange}
+#format-background = ${colors.dcyan}
 
 
 [module/longdate]
@@ -311,8 +310,8 @@ card = intel_backlight
 label = %percentage%%
 format = <ramp> <label>
 format-padding = 1
-format-background = ${colors.dcyan}
-# format-underline = ${colors.cyan}
+#format-background = ${colors.dcyan}
+format-underline = ${colors.orange}
 
 
 ; Only applies if <ramp> is used
@@ -329,8 +328,8 @@ type = internal/volume
 label-volume = %percentage%%
 format-volume = <ramp-volume> <label-volume>
 format-volume-padding = 1
-format-volume-background = ${colors.dcyan}
-# format-volume-underline = ${colors.cyan}
+#format-volume-background = ${colors.dcyan}
+format-volume-underline = ${colors.orange}
 
 ramp-volume-0 = 
 ramp-volume-1 = 
@@ -350,7 +349,7 @@ interval = 5
 
 label =  %output:0:50:%
 format-padding = 1
-format-background = ${colors.dgreen}
+format-foreground = ${colors.dgreen}
 # format-underline = ${colors.green}
 
 click-left = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
@@ -448,7 +447,7 @@ exec = $HOME/.config/polybar/weather.py
 interval = 600
 label = %output%
 format-padding = 1
-# format-background = ${colors.dgreen}
+format-foreground = ${colors.cyan1}
 # format-underline = ${colors.green}
 
 

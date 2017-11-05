@@ -8,27 +8,32 @@ import os
 
 
 def get_ip():
-    return urllib.request.urlopen('http://whatismyip.akamai.com/').read()
+    ip = urllib.request.urlopen('http://whatismyip.akamai.com/').read()
+
+    return ip.decode('utf-8')
 
 
 def get_city(ip):
     response = urllib.request.urlopen('http://freegeoip.net/json/{}'.format(ip)).read()
     data = json.loads(response)
+    city = data.get('city')
 
-    return data.get('city')
+    if not city:
+        timezone = data.get('timezone', '')
+        cont, *city = timezone.split('/')
+        if city:
+            return city[0]
+        
+    return city
 
 
 def main():
     try:
         city = get_city(get_ip())
+        if not city:
+            raise 
     except Exception as e:
         city = 'Brussels'
-        # with open(os.path.join(
-        #         os.path.expanduser("~"),
-        #         '.config',
-        #         'polybar',
-        #         'city')) as f:
-        #     city = f.readline().strip()
     try:
         with open(os.path.join(
                 os.path.expanduser("~"),
