@@ -337,7 +337,7 @@ bindsym control+F1 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.s
 bindsym control+F2 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 
 # Set wallpaper (need to install feh)
-exec_always feh --bg-scale $DATAPATH/pictures//wallpapers/rm2.png
+exec_always feh --bg-scale $DATAPATH/pictures/wallpapers/rm2.png
 
 # Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

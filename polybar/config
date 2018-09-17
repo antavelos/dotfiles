@@ -308,7 +308,8 @@ type = internal/backlight
 card = intel_backlight
 
 label = %percentage%%
-format = <ramp> <label>
+# format = <ramp> <label>
+format =  <label>
 format-padding = 1
 #format-background = ${colors.dcyan}
 format-underline = ${colors.orange}
