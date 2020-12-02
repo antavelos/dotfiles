@@ -1,0 +1,463 @@
+;=====================================================
+;
+;   Polybar Config
+;
+;=====================================================
+
+[colors]
+foreground = ${colors.white}
+background = ${colors.bgblue}
+bgblue = #010024
+white = #f8f8f8
+pink = #F92672
+dpink = #a01849
+cyan1 = #23ceef
+dcyan1 = #157b8f
+cyan = #3464A3
+dcyan = #3464A3
+purple = #8e4fff
+dpurple = #5a32a2
+orange = #f4a63a
+dorange = #aa7428
+green = #A6E22E
+dgreen = #77A915
+black = #000000
+yellow = #fff118
+dyellow = #ffd918
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+
+[bar/example]
+#monitor = ${env:MONITOR:HDMI1}
+monitor-fallback = ${env:MONITOR:eDP-1}
+dpi = ${xrdb:Xft.dpi:136}
+bottom = false
+width = 100%
+height = 30
+offset-x = 0
+offset-y = 0
+
+foreground = ${colors.foreground}
+background = ${colors.background}
+
+underline-size = 3
+
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 1
+
+font-0 = Inconsolata:fontformat=truetype:size=10:heavy;3
+font-1 = FontAwesome:fontformat=truetype:size=12;3
+font-2 = Unifont:fontformat=truetype:size=11;3
+
+tray-position = right
+tray-padding = 0
+tray-transparent = false
+tray-maxsize=24
+
+modules-left = i3 music weather
+modules-center =
+modules-right = battery1 wlan eth volume backlight filesystem memory cpu temperature xkeyboard date powermenu
+
+
+[bar/secondary]
+inherit=bar/example
+monitor = ${env:MONITOR:eDP-1}
+modules-left = i3 xwindow
+modules-center =
+modules-right = weather mail   longwlan longeth longethlocal longdate powermenu
+
+
+[bar/presentation]
+inherit=bar/example
+monitor = ${env:MONITOR:HDMI-2}
+modules-left = i3 xwindow
+modules-center = motd
+modules-right = weather volume wlan longdate
+
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:50:%
+
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+label-layout =  %layout%
+label-layout-padding = 1
+#label-layout-background = ${colors.dcyan}
+label-layout-underline = ${colors.orange}
+
+label-indicator-padding = 1
+label-indicator-background = ${colors.dpink}
+# label-indicator-underline = ${colors.orange}
+
+[module/i3]
+type = internal/i3
+index-sort = true
+wrapping-scroll = false
+pin-workspaces = false
+strip-wsnumbers = false
+
+format = <label-state> <label-mode>
+
+label-mode-padding = 1
+label-mode-background = ${colors.dpink}
+# label-mode-underline = ${colors.orange}
+
+label-focused = %icon%
+label-focused-padding = 1
+# label-focused-background = ${colors.dcyan}
+label-focused-underline = ${colors.orange}
+
+label-unfocused = %icon%
+label-unfocused-padding = 1
+
+label-urgent = %icon%
+label-urgent-padding = 1
+label-urgent-background = ${colors.dpink}
+# label-urgent-underline = ${colors.orange}
+
+label-visible = %icon%
+label-visible-padding = 1
+label-visible-background = ${colors.dcyan}
+# label-visible-underline = ${colors.orange}
+
+ws-icon-0 = 1;1
+ws-icon-1 = 2;2
+ws-icon-2 = 3;3
+ws-icon-3 = 4;4
+ws-icon-4 = 5;5
+ws-icon-5 = 6;6
+ws-icon-6 = 6;6
+ws-icon-7 = 7;7
+ws-icon-8 = 8;8
+ws-icon-9 = 9;9
+ws-icon-10 = 10;10
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+
+label =  %percentage%%
+format = <label>
+format-padding = 1
+#format-background = ${colors.dcyan}
+format-underline = ${colors.orange}
+
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+
+[module/temperature]
+type = internal/temperature
+interval = 1
+thermal-zone = 0
+warn-temperature = 60
+
+label = %temperature%
+format = <ramp> <label>
+format-padding = 1
+#format-background = ${colors.dcyan}
+format-underline = ${colors.orange}
+
+label-warn = %temperature%
+format-warn = <ramp> <label-warn>
+format-warn-padding = 1
+format-warn-background = ${colors.dpink}
+# format-warn-underline = ${colors.orange}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+
+
+[module/memory]
+type = internal/memory
+interval = 2
+
+label =  %percentage_used%%
+format-padding = 1
+#format-background = ${colors.dcyan}
+format-underline = ${colors.orange}
+
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted =  %free%
+format-mounted-padding = 1
+#format-mounted-background = ${colors.dcyan}
+format-mounted-underline = ${colors.orange}
+
+label-unmounted =   %mountpoint%
+format-unmounted-padding = 1
+format-unmounted-background = ${colors.dpink}
+# format-unmounted-underline = ${colors.pink}
+
+
+[module/network]
+type = internal/network
+interval = 3.0
+
+format-connected = <label-connected> <ramp-signal>
+format-connected-padding = 0
+format-connected-foreground = ${colors.green}
+format-connected-background = ${colors.background}
+
+format-disconnected-padding = 0
+format-disconnected-foreground = ${colors.pink}
+format-disconnected-background = ${colors.background}
+
+ramp-signal-0 = ▁
+ramp-signal-1 = ▂
+ramp-signal-2 = ▃
+ramp-signal-3 = ▄
+ramp-signal-4 = ▅
+ramp-signal-5 = ▆
+ramp-signal-6 = ▇
+ramp-signal-7 = █
+
+
+[module/wlan]
+inherit = module/network
+interface = wlp3s0
+
+label-connected =  %essid%
+label-disconnected = 
+
+
+[module/longwlan]
+inherit = module/network
+interface = wlp4s0
+
+label-connected =  %essid%  %local_ip%  %downspeed:8%  %upspeed:8%
+label-disconnected = 
+
+
+[module/eth]
+inherit = module/network
+interface = enp0s31f6
+
+label-connected =  %local_ip%
+label-disconnected = 
+
+
+[module/ethlocal]
+inherit = module/network
+interface = enp0s31f6
+
+label-connected =  %local_ip%
+label-disconnected = 
+
+
+[module/longeth]
+inherit = module/network
+interface = eth0
+
+label-connected =  %local_ip% %downspeed:8%  %upspeed:8%
+label-disconnected = 
+
+
+[module/longethlocal]
+inherit = module/network
+interface = enp0s31f6
+
+label-connected =  %local_ip%  %downspeed:8%  %upspeed:8%
+label-disconnected = 
+
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = %a %d %b
+time = %H:%M
+
+label =  %date%, %time%
+format-padding = 1
+format-underline = ${colors.orange}
+#format-background = ${colors.dcyan}
+
+
+[module/longdate]
+inherit = module/date
+label =  %date%  %time%
+
+[module/backlight]
+type = internal/backlight
+
+card = intel_backlight
+
+label = %percentage%%
+# format = <ramp> <label>
+format =  <label>
+format-padding = 1
+#format-background = ${colors.dcyan}
+format-underline = ${colors.orange}
+
+
+; Only applies if <ramp> is used
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
+
+[module/volume]
+type = internal/volume
+
+label-volume = %percentage%%
+format-volume = <ramp-volume> <label-volume>
+format-volume-padding = 1
+#format-volume-background = ${colors.dcyan}
+format-volume-underline = ${colors.orange}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+label-muted = 
+format-muted-padding = 1
+format-muted-background = ${colors.dpink}
+# format-muted-underline = ${colors.pink}
+
+
+[module/music]
+type = custom/script
+exec = $HOME/.config/polybar/mediaplayer.py
+exec-if = pgrep -x spotify
+interval = 5
+
+label =  %output:0:50:%
+format-padding = 1
+format-foreground = ${colors.dgreen}
+# format-underline = ${colors.green}
+
+click-left = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+
+
+[module/battery1]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 97
+time-format = %H:%M
+
+label-charging = %percentage%%
+format-charging = <animation-charging> <label-charging>
+format-charging-padding = 1
+# format-charging-background = ${colors.white}
+format-charging-foreground = ${colors.green}
+# format-charging-underline = ${colors.cyan}
+
+label-discharging = %percentage%% %time%
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-padding = 1
+# format-discharging-background = ${colors.dcyan}
+# format-discharging-underline = ${colors.orange}
+
+format-full-prefix = " "
+format-full-padding = 1
+format-full-background = ${colors.dcyan}
+# format-full-underline = ${colors.cyan}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = ${colors.dpink}
+ramp-capacity-1 = 
+ramp-capacity-1-foreground = ${colors.dorange}
+ramp-capacity-2 = 
+ramp-capacity-2-foreground = ${colors.dyellow}
+ramp-capacity-3 = 
+ramp-capacity-3-foreground = ${colors.dgreen}
+ramp-capacity-4 = 
+ramp-capacity-4-foreground = ${colors.green}
+
+
+[module/battery2]
+inherit = module/battery1
+battery = BAT1
+
+
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+
+label-open = " "
+label-open-foreground = ${colors.pink}
+label-close =  cancel
+label-close-foreground = ${colors.pink}
+label-separator = |
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = reboot
+
+menu-2-0 = power off
+menu-2-0-exec = poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+
+[module/mail]
+type = custom/script
+exec = $HOME/.config/polybar/mail.py
+interval = 60
+label =  %output%
+format-padding = 1
+format-background = ${colors.dorange}
+# format-underline = ${colors.orange}
+
+
+[module/weather]
+type = custom/script
+exec = $HOME/.config/polybar/weather.py
+interval = 600
+label = %output%
+format-padding = 1
+format-foreground = ${colors.cyan1}
+# format-underline = ${colors.green}
+
+
+[module/motd]
+type = custom/script
+exec = $HOME/.config/polybar/motd.sh
+interval = 60
+label = %output%
+format-padding = 1
+format-background = ${colors.dcyan}
+# format-underline = ${colors.cyan}
+; vim:ft=dosini

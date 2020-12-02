@@ -7,23 +7,25 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="bullet-train"
+ZSH_THEME="frisk"
 
 # Override BulletTrain theme settings
-BULLETTRAIN_EXIT_SHOW=true
-BULLETTRAIN_PROMPT_CHAR= 
-BULLETTRAIN_TIME_BG=magenta
-BULLETTRAIN_TIME_FG=white
-ZSH_THEME_GIT_PROMPT_UNTRACKED=” %F{magenta}✭%F{black}”
-BULLETTRAIN_PROMPT_ORDER=(
-  status
-  custom
-  context
-  dir
-  virtualenv
-  git
-  cmd_exec_time
-)
+#BULLETTRAIN_EXIT_SHOW=true
+#BULLETTRAIN_PROMPT_CHAR=
+#BULLETTRAIN_TIME_BG=magenta
+#BULLETTRAIN_TIME_FG=white
+#BULLETTRAIN_VIRTUALENV_PREFIX=
+#BULLETTRAIN_VIRTUALENV_FG=black
+#BULLETTRAIN_PROMPT_ADD_NEWLINE=false
+#ZSH_THEME_GIT_PROMPT_UNTRACKED=”%F{magenta}✭%F{black}”
+#BULLETTRAIN_PROMPT_ORDER=(
+#  status
+#  custom
+#  virtualenv
+#  context
+#  dir
+#  git
+#)
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -98,17 +100,74 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
+export DATAPATH='/media/alex/Data'
 # Aliases
-alias coda='cd ~/data/dev/codabox'
-alias ccoda='cd ~/data/dev/codabox/codabox/'
-alias codav='cd ~/data/dev/codabox && vim'
-alias codas='cd ~/data/dev/codabox && subl'
 alias vv='vim ~/.vimrc'
 alias vz='vim ~/.zshrc'
 alias sz='source ~/.zshrc'
-alias v3='vim ~/.i3/config'
+alias v3='vim ~/.config/i3/config'
 alias pgr='ps -ef | grep '
+alias dot='cd $DATAPATH/dev/dotfiles'
+alias dev='cd $DATAPATH/dev/'
+alias eur='cd $DATAPATH/dev/work/eurocontrol'
+alias ter='cd $DATAPATH/dev/go/src/github.com/antavelos/terminews'
+alias dcl='~/docker-clean.sh'
+alias dc='docker'
+alias dcc='docker-compose'
+alias ..='cd .. && ls -ltr'
+alias ...='cd ../../ && ls -ltr'
+alias ....='cd ../../../ && ls -ltr'
+# for conda
+alias env-recreate='~/conda-recreate.sh'
+alias env-activate='source activate $(basename $(pwd))'
+alias env-deactivate='source deactivate'
 
-screenfetch
-stty -ixon
+# start ssh-agent
+SSH_ENV="$HOME/.ssh/environment"
+
+function start_agent {
+    echo "Initialising new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add;
+}
+
+# Source SSH settings, if applicable
+
+if [ -f "${SSH_ENV}" ]; then
+    . "${SSH_ENV}" > /dev/null
+    #ps ${SSH_AGENT_PID} doesn't work under cywgin
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+        start_agent;
+    }
+else
+    start_agent;
+fi
+export GOPATH=$DATAPATH/dev/go
+PATH="/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/snap/bin:/usr/local/go/bin:$(/usr/local/go/bin/go env GOPATH)/bin:/opt/conda/bin:/home/alex/.local/bin/:$HOME/.cargo/bin:$HOME/tmux/"
+export PATH
+#export WORKON_HOME=$HOME/.virtualenvs
+#source /usr/bin/virtualenvwrapper.sh
+
+xset -b
+#archey3
+#stty -ixon
+source /home/alex/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/conda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/conda/etc/profile.d/conda.sh" ]; then
+        . "/opt/conda/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/conda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
