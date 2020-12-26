@@ -7,25 +7,8 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="frisk"
+ZSH_THEME="bira"
 
-# Override BulletTrain theme settings
-#BULLETTRAIN_EXIT_SHOW=true
-#BULLETTRAIN_PROMPT_CHAR=
-#BULLETTRAIN_TIME_BG=magenta
-#BULLETTRAIN_TIME_FG=white
-#BULLETTRAIN_VIRTUALENV_PREFIX=
-#BULLETTRAIN_VIRTUALENV_FG=black
-#BULLETTRAIN_PROMPT_ADD_NEWLINE=false
-#ZSH_THEME_GIT_PROMPT_UNTRACKED=”%F{magenta}✭%F{black}”
-#BULLETTRAIN_PROMPT_ORDER=(
-#  status
-#  custom
-#  virtualenv
-#  context
-#  dir
-#  git
-#)
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -97,30 +80,29 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-export DATAPATH='/media/alex/Data'
+
+export DEVPATH='/home/alex/dev'
+
 # Aliases
 alias vv='vim ~/.vimrc'
 alias vz='vim ~/.zshrc'
 alias sz='source ~/.zshrc'
 alias v3='vim ~/.config/i3/config'
 alias pgr='ps -ef | grep '
-alias dot='cd $DATAPATH/dev/dotfiles'
-alias dev='cd $DATAPATH/dev/'
-alias eur='cd $DATAPATH/dev/work/eurocontrol'
-alias ter='cd $DATAPATH/dev/go/src/github.com/antavelos/terminews'
-alias dcl='~/docker-clean.sh'
+alias dot='cd $DEVPATH/dotfiles'
+alias dev='cd $DEVPATH'
+alias eur='cd $DEVPATH/work/eurocontrol'
+alias ter='cd $DEVPATH/go/src/github.com/antavelos/terminews'
+alias dcl='$DEVPATH/devtools/docker-clean.sh'
 alias dc='docker'
 alias dcc='docker-compose'
 alias ..='cd .. && ls -ltr'
 alias ...='cd ../../ && ls -ltr'
 alias ....='cd ../../../ && ls -ltr'
 # for conda
-alias env-recreate='~/conda-recreate.sh'
+alias env-recreate='$DEVPATH/dev/devtools/conda-recreate.sh'
 alias env-activate='source activate $(basename $(pwd))'
-alias env-deactivate='source deactivate'
+alias env-deactivate='conda deactivate'
 
 # start ssh-agent
 SSH_ENV="$HOME/.ssh/environment"
@@ -145,29 +127,37 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
-export GOPATH=$DATAPATH/dev/go
-PATH="/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/snap/bin:/usr/local/go/bin:$(/usr/local/go/bin/go env GOPATH)/bin:/opt/conda/bin:/home/alex/.local/bin/:$HOME/.cargo/bin:$HOME/tmux/"
-export PATH
-#export WORKON_HOME=$HOME/.virtualenvs
-#source /usr/bin/virtualenvwrapper.sh
+export GOPATH=$DEVPATH/go
 
-xset -b
-#archey3
-#stty -ixon
-source /home/alex/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# PATH
+PATH="/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/snap/bin:/usr/local/go/bin:$(/usr/local/go/bin/go env GOPATH)/bin:/opt/conda/bin:/home/alex/.local/bin/:$HOME/.cargo/bin:$HOME/tmux/:$HOME/anaconda3/bin"
+export PATH
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/conda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/conda/etc/profile.d/conda.sh" ]; then
-        . "/opt/conda/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/conda/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+#__conda_setup="$('/home/alex/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/home/alex/anaconda3/etc/profile.d/conda.sh" ]; then
+#        . "/home/alex/anaconda3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/home/alex/anaconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
 # <<< conda initialize <<<
 
+# Powerline configuration
+if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then
+  powerline-daemon -q
+  POWERLINE_BASH_CONTINUATION=1
+  POWERLINE_BASH_SELECT=1
+  source /usr/share/powerline/bindings/bash/powerline.sh
+fi
+
+source /home/alex/dev/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Misc
+#xset -b
+#stty -ixon
