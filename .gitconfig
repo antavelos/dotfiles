@@ -50,7 +50,7 @@
     compression = 9
     excludesfile = ~/.gitignore_global
     filemode = false
-	editor = vim
+    editor = vim
 
 [diff]
     mnemonicprefix = true
